@@ -4,6 +4,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Nav from './components/Nav';
 import Home from './components/Home';
+import Menu from './components/Menu'
 import {BrowserRouter as Router, Routes ,Route} from 'react-router-dom';
 
 ReactDOM.render(
