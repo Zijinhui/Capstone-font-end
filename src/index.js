@@ -5,6 +5,7 @@ import './index.css';
 import Nav from './components/Nav';
 import Home from './components/Home';
 import Menu from './components/Menu/Menu';
+import Cart from './components/Cart'
 import {BrowserRouter as Router, Routes ,Route} from 'react-router-dom';
 
 ReactDOM.render(
@@ -15,7 +16,7 @@ ReactDOM.render(
             <Route path='/menu' element={<Menu />}/>
             <Route path='/login' element={<Home />}/>
             <Route path='/signup' element={<Home />}/>
-            <Route path='cart' element={<Home />}/>
+            <Route path='cart' element={<Cart />}/>
             <Route path='payment' element={<Home />}/>
           </Route>
       </Routes>
