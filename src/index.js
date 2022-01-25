@@ -10,7 +10,8 @@ ReactDOM.render(
   <Router>
       <Routes>
          <Route path='/' element={<Nav />}>
-            <Route path='/menu' element={<Home />}/>
+            <Route path='/home' element={<Home />}/>
+            <Route path='/menu' element={<Menu />}/>
             <Route path='/login' element={<Home />}/>
             <Route path='/signup' element={<Home />}/>
             <Route path='cart' element={<Home />}/>
