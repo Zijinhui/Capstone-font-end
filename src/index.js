@@ -4,6 +4,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Nav from './components/Nav';
 import Home from './components/Home';
+import Signup from './components/Signup';
 import {BrowserRouter as Router, Routes ,Route} from 'react-router-dom';
 
 ReactDOM.render(
@@ -11,9 +12,9 @@ ReactDOM.render(
       <Routes>
          <Route path='/' element={<Nav />}>
             <Route path='/home' element={<Home />}/>
-            <Route path='/menu' element={<Menu />}/>
+            <Route path='/menu' element={<Home />}/>
             <Route path='/login' element={<Home />}/>
-            <Route path='/signup' element={<Home />}/>
+            <Route path='/signup' element={<Signup />}/>
             <Route path='cart' element={<Home />}/>
             <Route path='payment' element={<Home />}/>
           </Route>
