@@ -5,10 +5,12 @@ export default function Nav(){
 
     return(
         <>
-             <nav>
+
+            <nav>
                 <Link to="/home">Home</Link>
                 <Link to="/menu">Menu</Link>
                 <Link to="/login">Login</Link>
+                <Link to="/signup">Signup</Link> //delete after login page created
                 <Link to="/cart">Cart</Link>
             </nav>
 

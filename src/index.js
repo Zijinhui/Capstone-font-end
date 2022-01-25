@@ -4,10 +4,10 @@ import './index.css';
 // import reportWebVitals from './reportWebVitals';
 import Nav from './components/Nav';
 import Home from './components/Home';
+import Signup from './components/Signup';
 import Menu from './components/Menu/Menu';
 import Cart from './components/Cart/Cart'
 import Food from './components/Menu/Food';
-
 import {BrowserRouter as Router, Routes ,Route} from 'react-router-dom';
 
 ReactDOM.render(
@@ -18,7 +18,7 @@ ReactDOM.render(
             <Route path='/menu' element={<Menu />} />
             <Route path='/menu/:type' element={<Food />} />
             <Route path='/login' element={<Home />}/>
-            <Route path='/signup' element={<Home />}/>
+            <Route path='/signup' element={<Signup />}/>
             <Route path='cart' element={<Cart />}/>
             <Route path='payment' element={<Home />}/>
           </Route>
