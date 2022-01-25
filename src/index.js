@@ -4,7 +4,7 @@ import './index.css';
 // import reportWebVitals from './reportWebVitals';
 import Nav from './components/Nav';
 import Home from './components/Home';
-import Signup from './components/Signup';
+import Signup from './components/auth/Signup';
 import Menu from './components/Menu/Menu';
 import Cart from './components/Cart/Cart'
 import Food from './components/Menu/Food';
