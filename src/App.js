@@ -1,6 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class App extends Component {
+
+function App () {
+    return (
+        <>hi</>
+    )
 }
 
 export default App;
