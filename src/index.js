@@ -1,13 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Nav from './components/Nav';
+import Home from './components/Home';
+import {BrowserRouter as Router, Routes ,Route} from 'react-router-dom';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Router>
+      <Routes>
+         <Route path='/' element={<Nav />}>
+            <Route path='/menu' element={<Home />}/>
+            <Route path='/login' element={<Home />}/>
+            <Route path='/signup' element={<Home />}/>
+            <Route path='cart' element={<Home />}/>
+            <Route path='payment' element={<Home />}/>
+          </Route>
+      </Routes>
+  </Router>,
   document.getElementById('root')
 );
 
