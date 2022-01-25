@@ -5,7 +5,7 @@ import './index.css';
 import Nav from './components/Nav';
 import Home from './components/Home';
 import Menu from './components/Menu/Menu';
-import Cart from './components/Cart'
+import Cart from './components/Cart/Cart'
 import Food from './components/Menu/Food';
 
 import {BrowserRouter as Router, Routes ,Route} from 'react-router-dom';
