@@ -5,6 +5,7 @@ import './index.css';
 import Nav from './components/Nav';
 import Home from './components/Home';
 import Menu from './components/Menu/Menu';
+import Food from './components/Menu/Food';
 import {BrowserRouter as Router, Routes ,Route} from 'react-router-dom';
 
 ReactDOM.render(
@@ -12,7 +13,8 @@ ReactDOM.render(
       <Routes>
          <Route path='/' element={<Nav />}>
             <Route path='/home' element={<Home />}/>
-            <Route path='/menu' element={<Menu />}/>
+            <Route path='/menu' element={<Menu />} />
+            <Route path='/menu/:type' element={<Food />} />
             <Route path='/login' element={<Home />}/>
             <Route path='/signup' element={<Home />}/>
             <Route path='cart' element={<Home />}/>
