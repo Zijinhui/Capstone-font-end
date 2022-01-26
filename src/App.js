@@ -5,6 +5,7 @@ import Signup from './components/auth/Signup';
 import Menu from './components/Menu/Menu';
 import Cart from './components/Cart/Cart'
 import Food from './components/Menu/Food';
+import Payment from './components/Payment/Payment'
 import {BrowserRouter as Router, Routes ,Route} from 'react-router-dom';
 
 function App () {
@@ -42,13 +43,13 @@ function App () {
         <Router>
             <Routes>
                 <Route path='/' element={<Nav />}>
-                    <Route path='/home' element={<Home />}/>
+                    {/*<Route path='/home' element={<Home />}/>*/}
                     <Route path='/menu' element={<Menu onClick={handleCart}/>} />
                     <Route path='/menu/:type' element={<Food onClick={handleCart}/>} />
                     <Route path='/login' element={<Home />}/>
                     <Route path='/signup' element={<Signup />}/>
                     <Route path='cart' element={<Cart food={cart} onClick={handleQty}/>}/>
-                    <Route path='payment' element={<Home />}/>
+                    <Route path='/payment' element={<Payment />}/>
                 </Route>
             </Routes>
         </Router>

@@ -3,43 +3,23 @@ import { useState} from 'react'
 import Address from './Address'
 import Card from './Card'
 
+
+
+
+
 function Payment() {
     const [dispaly , setDisplay] = useState({
         address: false,
         card: false
     })
-    //const formList = []
+
     function getCardForm() {
-        setDisplay({...dispaly, card: true})     
+        setDisplay({address:false, card: true})        
     }
 
     function getBothForm() {
-       setDisplay({address: true, card: true})
+       setDisplay({address: true, card: true}) 
     }
-
-    /*const display = formList.map((form) =>{
-        console.log(form)
-        return(
-        <div>{form}</div>
-        )}) */
-    //console.log(display)
-
-    const layout =()=> {
-        if (dispaly.address === true && dispaly.card === true) {
-            return (
-                <div>
-                     <Address />
-                     <Card />
-                </div>
-               
-            )
-        } else if (dispaly.address === false && dispaly.card === true) {
-            return (
-                <Card />
-            )
-        }
-    }
-  
 
     return (
         <div>
@@ -51,7 +31,8 @@ function Payment() {
                 </div>
             </div>
             <div>
-              {layout()}      
+              {dispaly.address ? (<Address/>) : <></>}  
+              {dispaly.card ? <Card /> : <></>}   
             </div>
             <button>NEXT</button>
         </div>
