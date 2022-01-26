@@ -15,7 +15,8 @@ function App () {
 
     const [cart, setCart] = React.useState([])
     const [price,setPrice] = React.useState(0)
-
+   
+   //setState([{...state, cart:[...state.cart,]}]])
 
 
     React.useEffect(async function(){
@@ -56,8 +57,7 @@ function App () {
         <Router>
             <Routes>
                 <Route path='/' element={<Nav />}>
-
-                    {/*<Route path='/home' element={<Home />}/>*/}
+                    <Route path='/home' element={<Home />}/>
                     <Route path='/menu' element={<Menu onClick={handleCart}/>} />
                     <Route path='/menu/:type' element={<Food onClick={handleCart}/>} />
                     <Route path='/login' element={<Home />}/>
