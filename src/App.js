@@ -1,7 +1,7 @@
 import React from 'react';
 import Nav from './components/Nav';
 import Home from './components/Home';
-import Signup from './components/auth/Signup';
+import Signup from './components/Auth/Signup';
 import Menu from './components/Menu/Menu';
 import Cart from './components/Cart/Cart'
 import Food from './components/Menu/Food';
@@ -13,6 +13,16 @@ function App () {
 
     const [cart, setCart] = React.useState([])
     const [price,setPrice] = React.useState(0)
+
+
+
+    React.useEffect(async function(){
+        let total = 0
+        cart.map(e=>{
+            total+= e.price*e.qty
+        })
+        await setPrice(total)
+    },[cart])
 
     async function handleCart(food){
 
@@ -49,7 +59,7 @@ function App () {
                     <Route path='/menu/:type' element={<Food onClick={handleCart}/>} />
                     <Route path='/login' element={<Home />}/>
                     <Route path='/signup' element={<Signup />}/>
-                    <Route path='cart' element={<Cart food={cart} onClick={handleQty}/>}/>
+                    <Route path='cart' element={<Cart food={cart} total={price} onClick={handleQty}/>}/>
                     <Route path='/payment' element={<Payment />}/>
                     <Route path='address' element={<Address />}/>
                 </Route>
