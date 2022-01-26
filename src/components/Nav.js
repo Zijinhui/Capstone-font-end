@@ -12,6 +12,7 @@ export default function Nav(){
                 <Link to="/login">Login</Link>
                 <Link to="/signup">Signup</Link> 
                 <Link to="/cart">Cart</Link>
+                <Link to="/payment">Payment</Link>
             </nav>
 
             {/* delete Signup after login page created */}
