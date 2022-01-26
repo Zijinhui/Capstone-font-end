@@ -1,11 +1,10 @@
 import { useRef, useState } from "react";
-
+import {Link} from 'react-router-dom';
 import { login, logout, useAuth } from "./firebase";
 
 export default function App() {
   const [ loading, setLoading ] = useState(false);
   const currentUser = useAuth();
-
   const emailRef = useRef();
   const passwordRef = useRef();
 
@@ -30,9 +29,9 @@ export default function App() {
   }
 
   return (
-    <div id="main">
-      
-      <div>Currently logged in as: { currentUser?.email } </div>
+    <div>
+    
+      <div>Log In</div>
 
       <form>
         Email:<input ref={emailRef} placeholder="Email" />
@@ -41,6 +40,9 @@ export default function App() {
 
       <button disabled={ loading || currentUser } onClick={handleLogin}>Log In</button>
       <button disabled={ loading || !currentUser } onClick={handleLogout}>Log Out</button>
+
+      <div>Currently logged in as: { currentUser?.email } </div>
+      <div>New Customer? <Link to="/signup">Sign Up</Link> </div>
 
     </div>
   );

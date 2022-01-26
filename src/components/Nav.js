@@ -10,7 +10,6 @@ export default function Nav(){
                 <Link to="/home">Home</Link>
                 <Link to="/menu">Menu</Link>
                 <Link to="/login">Login</Link>
-                <Link to="/signup">Signup</Link> 
                 <Link to="/cart">Cart</Link>
             </nav>
 
