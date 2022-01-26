@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState} from 'react'
 import Address from './Address'
+import Card from './Card'
+
 function Payment() {
     const [dispaly , setDisplay] = useState({
         address: false,
@@ -27,9 +29,13 @@ function Payment() {
             return (
                 <div>
                      <Address />
-                     <Address />
+                     <Card />
                 </div>
                
+            )
+        } else if (dispaly.address === false && dispaly.card === true) {
+            return (
+                <Card />
             )
         }
     }
@@ -46,6 +52,7 @@ function Payment() {
             </div>
             <div>
               {layout()}
+              <Card/>
             
             </div>
             <button>NEXT</button>
