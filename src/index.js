@@ -4,7 +4,7 @@ import './App.css';
 //import reportWebVitals from './reportWebVitals';
 import Nav from './components/Nav';
 import Home from './components/Home';
-import Payment from './components/Payment/Payment';
+import  Payment from './components/Payment/Payment';
 import Address from './components/Payment/Address'
 import {BrowserRouter as Router, Routes ,Route} from 'react-router-dom';
 

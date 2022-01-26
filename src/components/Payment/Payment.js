@@ -51,9 +51,7 @@ function Payment() {
                 </div>
             </div>
             <div>
-              {layout()}
-              <Card/>
-            
+              {layout()}      
             </div>
             <button>NEXT</button>
         </div>
