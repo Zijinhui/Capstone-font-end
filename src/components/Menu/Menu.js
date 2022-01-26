@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Nav from './nav'
 
-function Menu() {
+function Menu(props) {
 
       const [food,setFood] = React.useState([])
 
@@ -10,7 +10,6 @@ function Menu() {
         await axios.get('https://sushi-back-end.herokuapp.com/api/food')
           .then(json => setFood(json.data))
       },[])
-      console.log(food)
 
       //no image yet
       const display = food.map(e=> <div key={e.id}>
@@ -18,6 +17,7 @@ function Menu() {
                                         <li>{e.name}</li>
                                         <li>{e.price}</li>
                                         <li>{e.description}</li>
+                                        <button onClick={()=>props.onClick(e)}>Add to Cart</button>
                                     </div>)
 
       return (
