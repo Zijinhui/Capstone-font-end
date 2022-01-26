@@ -3,10 +3,9 @@ import MenuNav from './nav'
 import {useParams} from "react-router-dom";
 import axios from 'axios'
 
-const Food  = ()=> {
+function Food (props) {
 
       const {type} = useParams()
-      console.log(type.charAt(0).toUpperCase()+type.slice(1))
       const [food, setFood] = React.useState([])
 
       React.useEffect(()=>{
@@ -19,6 +18,7 @@ const Food  = ()=> {
                                         <li>{e.name}</li>
                                         <li>{e.price}</li>
                                         <li>{e.description}</li>
+                                        <button onClick={()=>props.onClick(e)}>Add to Cart</button>
                                     </div>)
 
       return (
