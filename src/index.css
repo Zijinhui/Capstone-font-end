@@ -12,9 +12,9 @@ code {
     monospace;
 }
 
-.flex {
+/* .flex {
   display: flex;
-}
+} */
 
 .order {
   margin: 1px;
