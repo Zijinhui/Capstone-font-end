@@ -12,6 +12,7 @@ export default function PaymentForm (){
     const [success,setSuccess] = useState(false)
     const stripe = useStripe()
     const elements = useElements()
+    const [input, setInput] = useState("")
 
     const CARD_OPTIONS = {
         iconStyle: "solid",
@@ -62,6 +63,11 @@ export default function PaymentForm (){
             console.log(error.message)
         }
     }
+
+    function handleChange(e) {
+        setInput(e.target)
+        console.log(e)
+    }
     return (
         <>
     
@@ -69,7 +75,7 @@ export default function PaymentForm (){
             <form onSubmit={handleSubmit}>
                 <fieldset className="FormGroup">
                     <div className="FormRow">
-                        <CardElement options={CARD_OPTIONS}/>
+                        <CardElement options={CARD_OPTIONS} onChange={handleChange}/>
                     </div>
                 </fieldset>
                 <button className="pay-btn">Pay</button>
