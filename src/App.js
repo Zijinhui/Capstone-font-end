@@ -5,6 +5,8 @@ import Signup from './components/auth/Signup';
 import Menu from './components/Menu/Menu';
 import Cart from './components/Cart/Cart'
 import Food from './components/Menu/Food';
+import  Payment from './components/Payment/Payment';
+import Address from './components/Payment/Address'
 import {BrowserRouter as Router, Routes ,Route} from 'react-router-dom';
 
 function App () {
@@ -48,7 +50,8 @@ function App () {
                     <Route path='/login' element={<Home />}/>
                     <Route path='/signup' element={<Signup />}/>
                     <Route path='cart' element={<Cart food={cart} onClick={handleQty}/>}/>
-                    <Route path='payment' element={<Home />}/>
+                    <Route path='/payment' element={<Payment />}/>
+                    <Route path='address' element={<Address />}/>
                 </Route>
             </Routes>
         </Router>
