@@ -1,11 +1,11 @@
 import React from 'react';
-import Nav from './components/Nav';
-import Home from './components/Home';
-import Login from './components/auth/Login';
-import Signup from './components/auth/Signup';
-import Menu from './components/Menu/Menu';
-import Cart from './components/Cart/Cart'
-import Food from './components/Menu/Food';
+import Nav from './Nav';
+import Home from './Home';
+import Login from './auth/Login';
+import Signup from './auth/Signup';
+import Menu from './Menu/Menu';
+import Cart from './Cart/Cart'
+import Food from './Menu/Food';
 import {BrowserRouter as Router, Routes ,Route} from 'react-router-dom';
 
 function App () {
