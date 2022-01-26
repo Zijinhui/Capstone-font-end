@@ -7,7 +7,7 @@ import Cart from './Cart/Cart'
 import Food from './Menu/Food';
 import  Payment from './Payment/Payment';
 import Address from './Payment/Address'
-import Review from './components/Payment/Review'
+import Review from './Payment/Review'
 import {BrowserRouter as Router, Routes ,Route} from 'react-router-dom';
 
 function App () {

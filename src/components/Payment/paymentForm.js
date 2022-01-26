@@ -40,6 +40,7 @@ export default function PaymentForm (){
             type: "card",
             card: elements.getElement(CardElement)
         })
+        console.log(elements.CardNumberElement)
 
         if(!error) {
             try {
