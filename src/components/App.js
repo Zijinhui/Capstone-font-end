@@ -14,7 +14,8 @@ function App () {
 
     const [cart, setCart] = React.useState([])
     const [price,setPrice] = React.useState(0)
-
+   
+   setState([{...state, cart:[...state.cart,]}]])
 
 
     React.useEffect(async function(){
