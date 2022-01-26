@@ -6,6 +6,7 @@ import Menu from './components/Menu/Menu';
 import Cart from './components/Cart/Cart'
 import Food from './components/Menu/Food';
 import Payment from './components/Payment/Payment'
+import Review from './components/Payment/Review'
 import {BrowserRouter as Router, Routes ,Route} from 'react-router-dom';
 
 function App () {
@@ -50,6 +51,7 @@ function App () {
                     <Route path='/signup' element={<Signup />}/>
                     <Route path='cart' element={<Cart food={cart} onClick={handleQty}/>}/>
                     <Route path='/payment' element={<Payment />}/>
+                    <Route path='/review' element={<Review />} />
                 </Route>
             </Routes>
         </Router>

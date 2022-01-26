@@ -2,15 +2,14 @@ import React from 'react'
 import { useState} from 'react'
 import Address from './Address'
 import Card from './Card'
-
-
-
+import { Navigate} from 'react-router-dom'
 
 
 function Payment() {
     const [dispaly , setDisplay] = useState({
         address: false,
-        card: false
+        card: false,
+        redirect: false
     })
 
     function getCardForm() {
@@ -19,6 +18,12 @@ function Payment() {
 
     function getBothForm() {
        setDisplay({address: true, card: true}) 
+    }
+    function jumpToReview() {
+        
+    }
+    if (dispaly.redirect) {
+        return (<Navigate to='/Review/'/>)
     }
 
     return (
@@ -32,9 +37,15 @@ function Payment() {
             </div>
             <div>
               {dispaly.address ? (<Address/>) : <></>}  
-              {dispaly.card ? <Card /> : <></>}   
+              {dispaly.card ? 
+                <div>
+                    <Card />
+                    <button onClick={() => setDisplay({redirect: true})}>CONTINUE TO LAST STEP</button>
+                </div>
+               : <></>
+               }   
             </div>
-            <button>NEXT</button>
+            
         </div>
     )
 }
