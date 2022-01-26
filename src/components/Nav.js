@@ -5,11 +5,12 @@ export default function Nav(){
 
     return(
         <>
+
             <div className='sushi-heading'>すし</div>
             <nav className='nav'>
                 <Link className='nav-link' to="/home">Home</Link>
                 <Link className='nav-link' to="/menu">Menu</Link>
-                <Link className='nav-link' to="/login">Login</Link>
+                {/* <Link className='nav-link' to="/login">Login</Link> */}
                 <Link className='nav-link' to="/signup">Signup</Link> 
                 <Link className='nav-link' to="/cart">Cart</Link>
             </nav>

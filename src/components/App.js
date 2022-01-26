@@ -1,6 +1,7 @@
 import React from 'react';
 import Nav from './Nav';
 import Home from './Home';
+import Login from './auth/Login';
 import Signup from './auth/Signup';
 import Menu from './Menu/Menu';
 import Cart from './Cart/Cart'
@@ -55,10 +56,12 @@ function App () {
         <Router>
             <Routes>
                 <Route path='/' element={<Nav />}>
+
                     {/*<Route path='/home' element={<Home />}/>*/}
                     <Route path='/menu' element={<Menu onClick={handleCart}/>} />
                     <Route path='/menu/:type' element={<Food onClick={handleCart}/>} />
                     <Route path='/login' element={<Home />}/>
+                    <Route path='/login' element={<Login />}/>
                     <Route path='/signup' element={<Signup />}/>
                     <Route path='cart' element={<Cart food={cart} total={price} onClick={handleQty}/>}/>
                     <Route path='/payment' element={<Payment />}/>
