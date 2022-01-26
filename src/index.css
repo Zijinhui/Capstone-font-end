@@ -1,10 +1,16 @@
+@font-face {
+  font-family: IBM-P;
+  src: url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&display=swap");
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'IBM Plex Mono', monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  background-color: rgb(253, 221, 160);
+  font-size: 20px;
 }
 
 code {
@@ -12,12 +18,73 @@ code {
     monospace;
 }
 
-/* .flex {
+.flex {
   display: flex;
-} */
+}
+
+.sushi-heading {
+  color: rgb(255, 0, 0);
+  padding: 10px;
+  background-color: #ffffff;
+  font-size: 50px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  user-select: none;
+}
+
+.nav {
+  background-color: #da4949;
+  padding: 10px;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 31px;
+  letter-spacing: 0em;
+  text-align: center;
+  user-select: none;
+}
+
+.nav-link {
+  margin: 15px;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  user-select: none;
+}
 
 .order {
-  margin: 1px;
+  width: 400px;
 }
+
+.order-heading {
+  width: 400px;
+  margin: 0px auto;
+  padding: 20px;
+}
+
+.order-list {
+  border: solid black 2px;
+  padding: 50px;
+  border-left: unset;
+  border-right: unset;
+}
+
+.total {
+  margin: 10px;
+}
+
+.flex-el{
+  margin: 0px auto;
+}
+
+.yourorder{
+  margin-left: 140px;
+  font-size: 20px;
+}
+
 .clearbutton {
+  margin: 0px 0px 0px auto;
 }
+
+button {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
