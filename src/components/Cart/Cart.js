@@ -12,9 +12,9 @@ function Cart(props) {
 
       return (
         <div>
-            <div className='flex'>
-                <h1 className='heading'>Your Order</h1>
-                <button className='clearbutton'>Clear cart</button>
+            <div className='order-heading flex'>
+                <div className='yourorder flex-el'>Your Order</div>
+                <button className='clearbutton flex-el'>Clear cart</button>
             </div>
             <div className='order-list'>
                 {display}
