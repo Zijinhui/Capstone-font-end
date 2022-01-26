@@ -5,13 +5,13 @@ export default function Nav(){
 
     return(
         <>
-
-            <nav>
-                <Link to="/home">Home</Link>
-                <Link to="/menu">Menu</Link>
-                <Link to="/login">Login</Link>
-                <Link to="/signup">Signup</Link> 
-                <Link to="/cart">Cart</Link>
+            <div className='sushi-heading'>すし</div>
+            <nav className='nav'>
+                <Link className='nav-link' to="/home">Home</Link>
+                <Link className='nav-link' to="/menu">Menu</Link>
+                <Link className='nav-link' to="/login">Login</Link>
+                <Link className='nav-link' to="/signup">Signup</Link> 
+                <Link className='nav-link' to="/cart">Cart</Link>
             </nav>
 
             {/* delete Signup after login page created */}
