@@ -29,15 +29,16 @@ function Menu(props) {
                                        <li>{e.image}image</li> 
                                          <li>{e.name}</li>
                                        <li>{e.price}</li>
-                                        <li>{e.description}</li>
+                                        <span maxlength="2">{e.description}</span>
                                          <button onClick={()=>handleChange(e)}>Add to Cart</button>
                                     </div>)
 
       return (
           <div>
             <Nav />
-
-            {display}
+            <div className="menuContainer">
+              {display}
+            </div>
 
           </div>
       );
