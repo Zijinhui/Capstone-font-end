@@ -1,4 +1,5 @@
-import { createContext,useContext,useReducer} from "react";
+import { createContext,useContext,useEffect,useReducer} from "react";
+import { useAuth } from "./Auth/AuthContext"
 
 const Cart = createContext()
 
@@ -9,10 +10,21 @@ const Context = ({children}) =>{
         cart:[]
     })
 
-    const [user,userDispatch] = useReducer(userReducer,{
-        currentUser: ''
-    })
+    const { currentUser } = useAuth()
 
+    useEffect(function(){
+        if (currentUser){
+            userDispatch({
+                type:'SET_USER',
+                user: currentUser
+            })
+        }
+    },[currentUser])
+
+    const [user,userDispatch] = useReducer(userReducer,{
+        currentUser: currentUser
+    })
+console.log(user.currentUser)
     return <Cart.Provider value={{state,dispatch,user,userDispatch}}>
             {children}
         </Cart.Provider>
@@ -24,6 +36,8 @@ export const userReducer = (state,action) =>{
             return {currentUser:action.payload}
         case 'Login_Out':
             return {currentUser:''}
+        case 'SET_USER':
+            return {currentUser:action.user.multiFactor.user.email}
         default :
             return state.currentUser
     }
