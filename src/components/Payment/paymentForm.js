@@ -64,10 +64,7 @@ export default function PaymentForm (){
         }
     }
 
-    function handleChange(e) {
-        setInput(e.target)
-        console.log(e)
-    }
+ 
     return (
         <>
     
@@ -75,7 +72,7 @@ export default function PaymentForm (){
             <form onSubmit={handleSubmit}>
                 <fieldset className="FormGroup">
                     <div className="FormRow">
-                        <CardElement options={CARD_OPTIONS} onChange={handleChange}/>
+                        <CardElement options={CARD_OPTIONS} />
                     </div>
                 </fieldset>
                 <button className="pay-btn">Pay</button>
