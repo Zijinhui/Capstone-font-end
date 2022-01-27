@@ -16,8 +16,8 @@ export default function nav(){
                         <div className='sushi-heading'>すし</div>
                         <Link className='nav-link' to="/home">Home</Link>
                         <Link className='nav-link' to="/menu">Menu</Link>
-                        {/* <Link className='nav-link' to="/login">Login</Link> */}
-                        <Link className='nav-link' to="/signup">Signup</Link> 
+                        <Link className='nav-link' to="/login">Login</Link>
+                        {/* <Link className='nav-link' to="/signup">Signup</Link>  */}
                         <Link className='nav-link' to="/cart">Cart</Link>
                         <Link className="nav-link" to="/payment">Payment</Link>
                     </nav>
