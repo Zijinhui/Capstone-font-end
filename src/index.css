@@ -150,6 +150,8 @@ a.more-link:hover {
 .sushi-icon {
   border: 1px solid black;
   border-radius: 5px;
+  height: min-content;
+  user-select: none;
 }
 
 .order-details {

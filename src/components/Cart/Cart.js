@@ -7,7 +7,7 @@ function Cart(props) {
 
       const {state:{cart,price}} = CartState()
 
-      const display = cart.map(e=> <Order key={e.food.id} food={e}/>)
+      const display = cart.map(e=> <Order key={e.food.id} food={e} image={e.food.image}/>)
 
       const history = useNavigate()
       function handleClick(){
