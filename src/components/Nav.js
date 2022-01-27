@@ -11,7 +11,6 @@ export default function NavBar(){
 
 
     const {state:{cart}} = CartState()
-    console.log(cart)
 
     function useWindowSize() {
         const [size, setSize] = useState([0, 0]);
@@ -39,7 +38,6 @@ export default function NavBar(){
     //   const {user:{currentUser}} = CartState()
 
       const { currentUser } = useAuth()
-      
 
     return(
         <>
