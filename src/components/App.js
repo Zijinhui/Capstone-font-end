@@ -17,11 +17,9 @@ function App () {
         <Router>
             <Routes>
                 <Route path='/' element={<Nav />}>
-
                     <Route path='/home' element={<Home />}/>
                     <Route path='/menu' element={<Menu />} />
-                    <Route path='/menu/:type' element={<Food/>} />
-                    <Route path='/login' element={<Home />}/>
+                    <Route path='/menu/:type' element={<Food/>}/>
                     <Route path='/login' element={<Login />}/>
                     <Route path='/signup' element={<Signup />}/>
                     <Route path='cart' element={<Cart />}/>

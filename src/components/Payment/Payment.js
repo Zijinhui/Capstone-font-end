@@ -20,7 +20,7 @@ function Payment() {
        setDisplay({address: true, card: true}) 
     }
     function jumpToReview() {
-        
+        setDisplay({address: false, card: true})
     }
     if (dispaly.redirect) {
         return (<Navigate to='/Review/'/>)
@@ -40,7 +40,7 @@ function Payment() {
               {dispaly.card ? 
                 <div>
                     <Card />
-                    <button onClick={() => setDisplay({redirect: true})}>CONTINUE TO LAST STEP</button>
+                    <button onClick={() => jumpToReview()}>CONTINUE TO LAST STEP</button>
                 </div>
                : <></>
                }   
