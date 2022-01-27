@@ -77,7 +77,7 @@ export default function NavBar(){
                
                 <Nav>
                     <Container fluid>
-                    <Dropdown className="m-auto" >
+                    <Dropdown className="m-auto" alignRight>
                         <Dropdown.Toggle variant="success" >
                         <IoCartOutline color="white" fontSize="25px"/>
                         <Badge>{cart.length>1? cart.reduce((pre,curr)=>pre.qty+curr.qty) : cart.length===1? cart[0].qty : 0}</Badge>
