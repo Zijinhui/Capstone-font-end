@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import {Link} from 'react-router-dom';
 import { signup, useAuth } from "./firebase";
+import {Form, Button} from 'react-bootstrap'
 
 export default function App() {
   const [ loading, setLoading ] = useState(false);
@@ -32,17 +33,31 @@ export default function App() {
   }
 
   return (
-    <div>
-      
-      <div>Sign up</div>
+    <div className="signUp-form">
+      <h1>Sign Up</h1>
       {error}
-      <form>
+      <Form>
+        <Form.Group className="mb-3" controlId="fromGroupEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control type="email" placeholder="Enter email" ref={emailRef}/>
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formGroupPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control type="password" placeholder="Password" ref={passwordRef} />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formGroupPassword">
+          <Form.Label>Confirm Password</Form.Label>
+          <Form.Control type="password" placeholder="Confirm Password" ref={passwordConfirmRef}/>
+          </Form.Group>
+      </Form>
+     
+      {/*<form>
         Email:<input ref={emailRef} placeholder="Email" />
         Password:<input ref={passwordRef} type="password" placeholder="Password" />
         Confirm password:<input ref={passwordConfirmRef} type="password" placeholder="Confirm password" />
-      </form>
+      </form>*/}
 
-      <button disabled={ loading || currentUser } onClick={handleSignup}>CREATE FREE ACCOUNT</button>
+      <Button variant="primary" type="submit" disabled={ loading || currentUser } onClick={handleSignup}>CREATE FREE ACCOUNT</Button>
 
       <div>Already have an account? <Link to="/login">Login</Link></div>
 

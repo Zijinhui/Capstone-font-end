@@ -2,7 +2,7 @@ import React from 'react';
 
 function Home() {
       return (
-        <div>
+        <div className="home">
           <h1>Home</h1>
           <p>[Sushi restaurant]</p>
           <p>We are open on Mondays, from 4-6 pm</p>
