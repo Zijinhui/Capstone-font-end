@@ -70,7 +70,7 @@ export default function NavBar(){
                     <Dropdown className="m-auto">
                         <Dropdown.Toggle variant="success">
                         <IoCartOutline color="white" fontSize="25px"/>
-                        <Badge>{cart.length>1? cart.reduce((pre,curr)=>pre.qty+curr.qty) : cart[0].qty}</Badge>
+                        <Badge>{cart.length>1? cart.reduce((pre,curr)=>pre.qty+curr.qty) : cart.length===1? cart[0].qty : 0}</Badge>
                         </Dropdown.Toggle>
                         <Dropdown.Menu style={{ minWidth: 370}}>
                             {cart.length > 0?
