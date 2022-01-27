@@ -24,8 +24,10 @@ function Cart(props) {
             <div className='order-list'>
                 {display}
             </div>
-            <div className='total'>Total: ${price}</div>
-            <button className='checkout' onClick={()=>handleClick()}>Check Out</button>
+            <div className='order-heading'>
+              <div className='text-center'>Total: ${price}</div>
+              <button className='check-out' onClick={()=>handleClick()}>Check Out</button>
+            </div>
         </div>
       );
 

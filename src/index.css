@@ -130,9 +130,7 @@ a.more-link:hover {
   border-right: unset;
 }
 
-.total {
-  margin: 10px;
-}
+
 
 .flex-el{
   margin: 0px auto;
@@ -143,31 +141,29 @@ a.more-link:hover {
   font-size: 20px;
 }
 
-.clearbutton {
-  margin: 0px 0px 0px auto;
+
+
+.check-out {
+  margin-left: 38%;
+  text-align: center;
 }
 
 .sushi-icon {
   border: 1px solid black;
   border-radius: 5px;
-  height: min-content;
   user-select: none;
+  margin-right: 30px;
+  min-width: 85px;
+  max-width: 85px;
 }
 
 .order-details {
-  font-size: 17px;
-  text-align: left;
-  margin-left: 20px;
+  width: 300px;
 }
 
 .order-name {
   margin-bottom: 3px;
 }
 .price-change {
-  margin: 0px 0px 0px 100%
+  margin: 0px 0px 0px auto;
 }
-
-button {
-  font-family: 'IBM Plex Mono', monospace;
-}
-
