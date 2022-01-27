@@ -48,7 +48,7 @@ export default function NavBar(){
                         <></>
                         :
                         <>
-                            <Link className='nav-link' to="/home">Home</Link>
+                            <Link className='nav-link' to="/">Home</Link>
                             <Link className='nav-link' to="/menu">Menu</Link>
                             {currentUser? <Link className='nav-link' to="/user-profile">User Profile</Link> : <Link className='nav-link' to="/login">Login</Link>}
                             <Link className='nav-link' to="/cart">Cart</Link>
