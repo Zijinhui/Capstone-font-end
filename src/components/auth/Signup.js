@@ -23,6 +23,7 @@ export default function Signup() {
       setError("")
       setLoading(true)
       await signup(emailRef.current.value, passwordRef.current.value)
+      setError("Hey")
     } catch (err){
       console.log(err)
       setError("Failed to create an account")
@@ -36,8 +37,8 @@ export default function Signup() {
       <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Sign Up</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          {!error && <Alert variant='success'>Successful Sign up</Alert>}
+          {error != "Hey" && <Alert variant="danger">{error}</Alert>}
+          {error === "Hey" && <Alert variant='success'>Successful Sign up</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>
