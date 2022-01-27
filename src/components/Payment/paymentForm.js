@@ -84,6 +84,7 @@ export default function PaymentForm (){
             <div>
                 <h2>   Thanks for your phurchasing! 
 We will notice you when the store accept your order!</h2>
+                <img src={require('../../img/thank-you.gif')}/>
             </div> 
         }
 
