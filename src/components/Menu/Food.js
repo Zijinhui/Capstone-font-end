@@ -2,7 +2,7 @@ import React from 'react'
 import MenuNav from './nav'
 import {useParams} from "react-router-dom";
 import axios from 'axios'
-import { CartState } from '../Global';
+import { CartState } from '../GlobalContext';
 
 function Food (props) {
 

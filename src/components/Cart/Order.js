@@ -1,5 +1,5 @@
 import React from 'react'
-import { CartState } from '../Global';
+import { CartState } from '../GlobalContext';
 
 function Order(props){
 

@@ -4,8 +4,7 @@ import { Container, FormControl, Navbar, Nav, Dropdown, Badge } from 'react-boot
 import { IoCartOutline } from 'react-icons/io5'
 import { GiSushis } from 'react-icons/gi'
 import { useLayoutEffect, useState } from 'react';
-
-
+import { useAuth } from "./Auth/AuthContext"
 
 export default function NavBar(){
     function useWindowSize() {
@@ -31,6 +30,9 @@ export default function NavBar(){
         return smallScreen
       }
       
+    //   const {user:{currentUser}} = CartState()
+
+      const { currentUser } = useAuth()
       
 
     return(
@@ -48,8 +50,7 @@ export default function NavBar(){
                         <>
                             <Link className='nav-link' to="/home">Home</Link>
                             <Link className='nav-link' to="/menu">Menu</Link>
-                            <Link className='nav-link' to="/login">Login</Link>
-                            {/* <Link className='nav-link' to="/signup">Signup</Link>  */}
+                            {currentUser? <Link className='nav-link' to="/user-profile">User Profile</Link> : <Link className='nav-link' to="/login">Login</Link>}
                             <Link className='nav-link' to="/cart">Cart</Link>
                             <Link className="nav-link" to="/payment">Payment</Link>
                         </>   

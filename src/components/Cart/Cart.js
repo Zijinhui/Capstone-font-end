@@ -1,6 +1,6 @@
 import React from 'react';
 import Order from './Order';
-import { CartState } from '../Global';
+import { CartState } from '../GlobalContext';
 
 function Cart(props) {
 

@@ -1,5 +1,4 @@
-import { createContext,useContext,useReducer,useState,useEffect} from "react";
-import axios from 'axios'
+import { createContext,useContext,useReducer} from "react";
 
 const Cart = createContext()
 
@@ -10,14 +9,27 @@ const Context = ({children}) =>{
         cart:[]
     })
 
-    return <Cart.Provider value={{state,dispatch}}>
+    const [user,userDispatch] = useReducer(userReducer,{
+        currentUser: ''
+    })
+
+    return <Cart.Provider value={{state,dispatch,user,userDispatch}}>
             {children}
         </Cart.Provider>
 }
 
+export const userReducer = (state,action) =>{
+    switch(action.type){
+        case 'Login_In':
+            return {currentUser:action.payload}
+        case 'Login_Out':
+            return {currentUser:''}
+        default :
+            return state.currentUser
+    }
+}
+
 export const cartReducer = (state,action) =>{
-    console.log(action)
-    console.log(state.cart)
     switch(action.type){
         case 'ADD_TO_CART':
             let exist = false
