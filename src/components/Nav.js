@@ -77,18 +77,20 @@ export default function NavBar(){
                
                 <Nav>
                     <Container fluid>
-                    <Dropdown className="m-auto" alignRight>
+                    <Dropdown className="m-auto" >
                         <Dropdown.Toggle variant="success" >
                         <IoCartOutline color="white" fontSize="25px"/>
                         <Badge>{cart.length>1? cart.reduce((pre,curr)=>pre.qty+curr.qty) : cart.length===1? cart[0].qty : 0}</Badge>
                         </Dropdown.Toggle>
-                        <Dropdown.Menu  style = {{ minWidth: 150}} className="dropdown-menu">
+                        <Dropdown.Menu  style = {{ minWidth: 100}} className="dropdown-menu">
                             {cart.length > 0?
-                            <>{
+                            <>
+                            <div className="cart-list">{
                                 cart.map(prod => <span>
                                        <p>{prod.food.name} qty:{prod.qty}</p>
                                 </span>)
-                            }</>
+                            }
+                            </div></>
                             :
                             (<span style={{ padding: 10}} className="nav-item dropleft">Cart is Empty!</span>)
                             }
