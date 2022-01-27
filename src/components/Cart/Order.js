@@ -16,14 +16,15 @@ function Order(props){
 
     return (
         <div className='order flex flex-el'>
-            <img alt='[image]'/>
+            <img className='sushi-icon' alt='[image]'/>
             {props.food.food.id && <div>
-                <div>{props.food.food.name}</div>                        
+                <div className='order-name'>{props.food.food.name}</div>                        
                 <div className='flex'>
-                    <div className='price'>${props.food.food.price}</div>
+                    <div className='price price-change'>${props.food.food.price}</div>
                     <button onClick={()=>handleChange(props.food.food,'DECREMENT_IN_CART')}>-</button>
                     <div className='price'>{props.food.qty}</div>
                     <button onClick={()=>handleChange(props.food.food,'INCREMENT_IN_CART')}>+</button>
+
                 </div>
             </div>}
         </div>
