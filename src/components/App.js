@@ -4,6 +4,8 @@ import Home from './Home';
 import Login from './Auth/Login';
 import Signup from './Auth/Signup';
 import ForgotPassword from './Auth/ForgotPassword';
+import Dashboard from './Auth/Dashboard';
+import UpdateProfile from './Auth/UpdateProfile';
 import Menu from './Menu/Menu';
 import Cart from './Cart/Cart'
 import Food from './Menu/Food';
@@ -30,6 +32,8 @@ function App () {
                         <Route path='address' element={<Address />}/>
                         <Route path='/review' element={<Review />} />
                         <Route path="/forgot-password" element={<ForgotPassword />} />
+                        <Route path="/user-profile" element={<Dashboard />} />
+                        <Route path="/update-profile" element={<UpdateProfile />} />
                     </Route>
                 </Routes>
             </AuthProvider>
