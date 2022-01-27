@@ -17,6 +17,8 @@ export default function Signup() {
 
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
       return setError("Passwords do not match")
+    } else if (passwordRef.current.value.length<6){
+      return setError("Password must be length 6")
     }
 
     try {
@@ -37,7 +39,7 @@ export default function Signup() {
       <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Sign Up</h2>
-          {error != "Hey" && <Alert variant="danger">{error}</Alert>}
+          {(error !== "Hey"&&error )&& <Alert variant="danger">{error}</Alert>}
           {error === "Hey" && <Alert variant='success'>Successful Sign up</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">

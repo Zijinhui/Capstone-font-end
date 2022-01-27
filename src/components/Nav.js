@@ -5,6 +5,7 @@ import { IoCartOutline } from 'react-icons/io5'
 import { GiSushis } from 'react-icons/gi'
 import { TiThMenuOutline } from 'react-icons/ti'
 import { useLayoutEffect, useState } from 'react';
+import { useAuth } from "./Auth/AuthContext"
 
 export default function NavBar(){
     function useWindowSize() {
@@ -29,7 +30,12 @@ export default function NavBar(){
         }
         return smallScreen
       }
-    
+      
+    //   const {user:{currentUser}} = CartState()
+
+      const { currentUser } = useAuth()
+      
+
     return(
         <>
             <Navbar bg="dark" variant="dark" expand={'lg'} style={{ height: 80}}>
@@ -50,10 +56,9 @@ export default function NavBar(){
                             </NavDropdown>
                         :                  
                         <>
-                            <Link className='nav-link' to="/home">Home</Link>
+                            <Link className='nav-link' to="/">Home</Link>
                             <Link className='nav-link' to="/menu">Menu</Link>
-                            <Link className='nav-link' to="/login">Login</Link>
-                            {/* <Link className='nav-link' to="/signup">Signup</Link>  */}
+                            {currentUser? <Link className='nav-link' to="/user-profile">User Profile</Link> : <Link className='nav-link' to="/login">Login</Link>}
                             <Link className='nav-link' to="/cart">Cart</Link>
                             <Link className="nav-link" to="/payment">Payment</Link>
                         </>   

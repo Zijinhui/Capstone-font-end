@@ -1,7 +1,7 @@
 import React, {useEffect,useState }from 'react'
 import axios from 'axios'
 import Nav from './nav'
-import { CartState } from '../Global';
+import { CartState } from '../GlobalContext';
 
 function Menu(props) {
 
