@@ -57,7 +57,7 @@ export default function App() {
         Confirm password:<input ref={passwordConfirmRef} type="password" placeholder="Confirm password" />
       </form>*/}
 
-      <Button variant="primary" type="submit" disabled={ loading || currentUser } onClick={handleSignup}>CREATE FREE ACCOUNT</Button>
+      <Button variant="primary" type="submit" disabled={ loading || currentUser } onClick={handleSignup}>CREATE ACCOUNT</Button>
 
       <div>Already have an account? <Link to="/login">Login</Link></div>
 
