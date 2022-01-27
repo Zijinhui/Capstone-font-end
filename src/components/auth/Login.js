@@ -21,7 +21,7 @@ export default function Login() {
       setError("")
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value)
-      history('/home')
+      history('/')
 
       await axios.post("https://sushi-back-end.herokuapp.com/api/user", {email:email})
           .then(function (response) {
