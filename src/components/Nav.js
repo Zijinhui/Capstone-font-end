@@ -5,8 +5,14 @@ import { IoCartOutline } from 'react-icons/io5'
 import { GiSushis } from 'react-icons/gi'
 import { useLayoutEffect, useState } from 'react';
 import { useAuth } from "./Auth/AuthContext"
+import { CartState } from './GlobalContext';
 
 export default function NavBar(){
+
+
+    const {state:{cart}} = CartState()
+    console.log(cart)
+
     function useWindowSize() {
         const [size, setSize] = useState([0, 0]);
         useLayoutEffect(() => {
@@ -61,13 +67,21 @@ export default function NavBar(){
 
                 {/* delete Signup after login page created */}
                 <Nav>
-                    <Dropdown alignRight>
+                    <Dropdown className="m-auto">
                         <Dropdown.Toggle variant="success">
                         <IoCartOutline color="white" fontSize="25px"/>
-                        <Badge>{10}</Badge>
+                        <Badge>{cart.length>1? cart.reduce((pre,curr)=>pre.qty+curr.qty) : cart.length===1? cart[0].qty : 0}</Badge>
                         </Dropdown.Toggle>
-                        <Dropdown.Menu style={{ minWidth: 100}}>
-                            <span style={{ padding: 10}}>Cart is Empty!</span>
+                        <Dropdown.Menu style={{ minWidth: 370}}>
+                            {cart.length > 0?
+                            <>{
+                                cart.map(prod => <span>
+                                       <p>{prod.food.name} qty:{prod.qty}</p>
+                                </span>)
+                            }</>
+                            :
+                            (<span style={{ padding: 10}}>Cart is Empty!</span>)
+                            }
                         </Dropdown.Menu>
                     </Dropdown>
                 </Nav>
