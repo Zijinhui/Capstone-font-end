@@ -3,8 +3,6 @@ import { CartState } from '../GlobalContext';
 
 function Order(props){
 
-    console.log(props.food.food)
-
     const {dispatch} = CartState()
 
     function handleChange(food, type) {
@@ -16,7 +14,7 @@ function Order(props){
 
     return (
         <div className='order flex flex-el'>
-            <img className='sushi-icon' alt='[image]'/>
+            <img className='sushi-icon' src={props.image} alt='[image]' width='85px'/>
             {props.food.food.id && <div>
                 <div className='order-name'>{props.food.food.name}</div>                        
                 <div className='flex'>
