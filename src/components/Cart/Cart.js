@@ -1,12 +1,20 @@
 import React from 'react';
 import Order from './Order';
 import { CartState } from '../GlobalContext';
+import { useNavigate} from 'react-router-dom'
 
 function Cart(props) {
 
       const {state:{cart,price}} = CartState()
 
       const display = cart.map(e=> <Order key={e.food.id} food={e}/>)
+
+      const history = useNavigate()
+      function handleClick(){
+        if (cart.length>0){
+          history('/payment')
+        }
+      }
       
       return (
         <div>
@@ -17,7 +25,7 @@ function Cart(props) {
                 {display}
             </div>
             <div className='total'>Total: ${price}</div>
-            <button className='checkout'>check out</button>
+            <button className='checkout' onClick={()=>handleClick()}>Check Out</button>
         </div>
       );
 
