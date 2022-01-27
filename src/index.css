@@ -92,3 +92,21 @@ a.more-link:hover {
   border-radius: 0px;
   }
 
+  /*Menu*/
+  .side-bar {
+    height: 100vh;
+    width: 350px;
+    background:oldlace;
+    position: absolute;
+    border:  1px solid transparent;
+    left: 0;
+    text-align: left
+
+  }
+
+  .categories {
+    padding: 10px;
+  }
+  li link{
+    display: inline;
+  }
