@@ -37,6 +37,7 @@ code {
 .home p{
   text-align: center;
   font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 20px;
 }
 
 .sleep-sushi{
@@ -178,3 +179,9 @@ a.more-link:hover {
   margin-right: 30px;
 }
 
+.thx-img{
+  width: 500px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

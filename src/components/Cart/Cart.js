@@ -1,6 +1,7 @@
 import React from 'react';
 import Order from './Order';
 import { CartState } from '../GlobalContext';
+import { Navigate } from 'react-router-dom'
 import { useNavigate} from 'react-router-dom'
 
 function Cart(props) {

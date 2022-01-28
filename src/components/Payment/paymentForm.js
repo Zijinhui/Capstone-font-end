@@ -3,10 +3,7 @@ import {CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import axios from 'axios'
 import { useAuth } from "../Auth/AuthContext"
 import { CartState } from '../GlobalContext';
-// {/* <form onSubmit={handleSubmit}> */}
-// <CardElement options={CARD_OPTIONS}/>
-// {/* <button>Pay</button>
-// </form> */}
+
 
 export default function PaymentForm (props){
 
@@ -35,36 +32,33 @@ export default function PaymentForm (props){
     const showAddress = () => {
         return(
             <div className="address-form">   
-                <div>
+                <div className="name">
                     <label>First Name</label> 
                     <input type="text" name="first_name" onChange={updateAddress} />     
                     <label>Last Name</label> 
                     <input type="text" name="last_name" onChange={updateAddress} />                             
-                </div>
-                <div>
-                    <label>Phone</label> 
-                    <input type="text" name="phone" onChange={updateAddress} />                               
-                </div>    
-                <div>
+                </div >
+
+                <div className="address-row">
                     <label>Street</label> 
-                    <input type="text" name="street" onChange={updateAddress} />                               
-                </div>
-                <div className="apt">
+                    <input type="text" name="street" onChange={updateAddress} />   
                     <label >Apt(optional)</label> 
-                    <input type="text" name="apt" onChange={updateAddress}/>                      
+                    <input type="text" name="apt" onChange={updateAddress}/>                                        
                 </div>
                 <div className="city">
                     <label>City</label> 
-                    <input type="text" name="city" onChange={updateAddress} />                               
-                </div>
-                <div className="state">
+                    <input type="text" name="city" onChange={updateAddress} />
                     <label>State</label> 
-                    <input type="text" name="state" onChange={updateAddress} />                               
+                    <input type="text" name="state" onChange={updateAddress} />                                
                 </div>
-                <div className="zip">
+                <div>
                     <label>Zip</label> 
-                    <input type="text" name="zip" onChange={updateAddress} />                               
-                </div>
+                    <input type="text" name="zip" onChange={updateAddress} /> 
+                    <label>Phone</label> 
+                    <input type="text" name="phone" onChange={updateAddress} />                               
+                </div>    
+                
+            
         </div>
         )
     }
@@ -93,7 +87,6 @@ export default function PaymentForm (props){
         e.preventDefault()
         console.log(info)
         //props.updateAddress(true)
-        console.log(info.street)
 
         const {error, paymentMethod} = await stripe.createPaymentMethod({
             type: "card",
@@ -103,6 +96,7 @@ export default function PaymentForm (props){
         if(!error) {
             try {
                 const {id} = paymentMethod
+
                 const response = await axios.post("https://sushi-back-end.herokuapp.com/payment", {
                     amount: price,
                     id
@@ -140,19 +134,20 @@ export default function PaymentForm (props){
         return (
             <>
             {!success ? 
-               <>
+            
+               <div className="card-input">
                     <fieldset className="FormGroup">
                         <div className="FormRow">
                             <CardElement options={CARD_OPTIONS} />
                         </div>
                     </fieldset>
                     <button className="pay-btn" >Pay</button>
-               </>
+               </div>
                 :
                 <div>
-                    <h2>   Thanks for your phurchasing! 
-              We will notice you when the store accept your order!</h2>
-                    <img src={require('../../img/thank-you.gif')}/>
+                    <h2>   Thanks for your phurchasing! </h2>
+              <h2>We will notice you when the store accept your order!</h2>
+                    <img src={require('../../img/thank-you.gif')} className="thx-img"/>
                 </div> 
             }
             </>
@@ -160,11 +155,11 @@ export default function PaymentForm (props){
     }
 
  
-    return (
+    return (   
         <>
-        <form onSubmit={handleSubmit}>
-        {props.display.address && showAddress() }
-        {props.display.card && showCard() }
+        <form onSubmit={handleSubmit} className="payment-form" align="center">
+            {(props.display.address && success===false) && showAddress() }
+            {props.display.card && showCard() } 
         </form>
         </>
     )

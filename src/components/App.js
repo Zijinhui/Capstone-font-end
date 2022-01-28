@@ -15,6 +15,7 @@ import {BrowserRouter as Router, Routes ,Route} from 'react-router-dom';
 function App () {
 
     return(
+        <>
         <Router>
                 <Routes>
                     <Route path='/' element={<Nav />}>
@@ -24,13 +25,25 @@ function App () {
                         <Route path='/login' element={<Login />}/>
                         <Route path='/signup' element={<Signup />}/>
                         <Route path='cart' element={<Cart/>} />
-                        <Route path='/payment' element={<Payment />}/>
+                        <Route path='payment' element={<Payment />}/>
                         <Route path="/forgot-password" element={<ForgotPassword />} />
                         <Route path="/user-profile" element={<Dashboard />} />
                         <Route path="/update-profile" element={<UpdateProfile />} />
                     </Route>
                 </Routes>
         </Router>
+        <div id='footer' >
+            <div id='footerItems'>
+                Zixin Zou   |
+                Zijinhui Zhuang  |
+                Jiayi Chen   |
+                Oleksii Kravtsov
+            </div>
+            <div id='bottomOfFooter' className='center' className='centerText'>
+                Ⓒ Group 9
+            </div>
+        </div>
+        </>
     )
 }
 
