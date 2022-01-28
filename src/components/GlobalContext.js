@@ -24,7 +24,7 @@ const Context = ({children}) =>{
     const [user,userDispatch] = useReducer(userReducer,{
         currentUser: currentUser
     })
-console.log(user.currentUser)
+
     return <Cart.Provider value={{state,dispatch,user,userDispatch}}>
             {children}
         </Cart.Provider>
@@ -49,14 +49,12 @@ export const cartReducer = (state,action) =>{
             let exist = false
             state.cart.map(e=> {
                 if (e.food.id===action.payload.food.id){
-                    console.log(state.price)
                     e['qty'] = e.qty+1
                     exist = true
                     return {price:state.price+e.food.price, cart:state.cart}
                 }
             })
             if (!exist){
-                console.log('hi, not exist')
                 return {price:state.price+action.payload.food.price,cart:[...state.cart, {...action.payload,qty:1}]}
             }
             return {price:state.price+action.payload.food.price,cart:state.cart}
