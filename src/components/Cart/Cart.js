@@ -6,14 +6,17 @@ import { useNavigate} from 'react-router-dom'
 
 function Cart(props) {
 
-      //const [redirect, setRedirect] = useState(false)
-      const {state:{cart,price}} = CartState()
+      const {state:{cart,price},dispatch} = CartState()
 
       const display = cart.map(e=> <Order key={e.food.id} food={e} image={e.food.image}/>)
 
       const history = useNavigate()
       function handleClick(){
         if (cart.length>0){
+          dispatch({
+            type:'SET_FINALPRICE',
+            price:(price*0.08875+price).toFixed(2)
+          })
           history('/payment')
         }
       }
@@ -69,13 +72,13 @@ function Cart(props) {
                     <div class="p-4">
                     <p class="mb-4"><em>Shipping and additional costs are calculated based on values you have entered.</em></p>
                     <ul class="list-unstyled mb-4">
-                        <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><strong>${price}</strong></li>
-                        <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Shipping and handling</strong><strong>$5.00</strong></li>
+                        <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><strong>${price.toFixed(2)}</strong></li>
+                        <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Shipping and handling</strong><strong>{price>=15||price===0? '$'+0: '$'+5.00}</strong></li>
                         <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tax</strong><strong>${(price*0.08875).toFixed(2)}</strong></li>
                         <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
-                        <h5 class="fw-bold">${(price*1.08875+5).toFixed(2)}</h5>
+                        <h5 class="fw-bold">${(price*0.08875+price).toFixed(2)}</h5>
                         </li>
-                    </ul><a href="#" class="btn btn-dark rounded-pill py-2 d-md-block" onClick={()=>handleClick()}>Procceed to checkout</a>
+                    </ul><button onClick={()=>handleClick()} class="btn btn-dark rounded-pill py-2 d-md-block">Procceed to checkout</button>
                     </div>
                 </div>
                 </div>

@@ -1,18 +1,23 @@
 import React, {useState} from 'react'
 import {CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import axios from 'axios'
+import { useAuth } from "../Auth/AuthContext"
+import { CartState } from '../GlobalContext';
+
 
 export default function PaymentForm (props){
 
     const [success,setSuccess] = useState(false)
     const stripe = useStripe()
     const elements = useElements()
+    const {currentUser} = useAuth()
+    const {state:{price}} = CartState()
 
-    const [info, setAddress] = useState({
+    const [info, setInfo] = useState({
         first_name:"",
         last_name:"",
         phone:"",
-        street: "",
+        address: "",
         apt: "",
         city: "",
         state: "",
@@ -20,10 +25,9 @@ export default function PaymentForm (props){
     })
 
     function updateAddress (e) {      
-        setAddress({...info, [e.target.name]: e.target.value})
-        //console.log(e.target)
+        setInfo({...info, [e.target.name]: e.target.value})
     }
-    //console.log(address)
+    console.log(info)
 
     const showAddress = () => {
         return(
@@ -81,8 +85,8 @@ export default function PaymentForm (props){
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        //props.updateAddress(true)
         console.log(info)
+        //props.updateAddress(true)
 
         const {error, paymentMethod} = await stripe.createPaymentMethod({
             type: "card",
@@ -92,15 +96,31 @@ export default function PaymentForm (props){
         if(!error) {
             try {
                 const {id} = paymentMethod
-                await axios.post("https://sushi-back-end.herokuapp.com/payment", {amount: 100, id})
-                .then((res)=> {
-                    console.log(res)
-                    console.log(res.data)
-                    if(res.data.success===false) {
-                    console.log("Successful payment")
-                    setSuccess(true)
-                }})
-                .catch((err)=> console.log(err))
+
+                const response = await axios.post("https://sushi-back-end.herokuapp.com/payment", {
+                    amount: price,
+                    id
+                }).then(res=> console.log("Successful payment"))
+                .catch((err)=> console.log(err.message))
+    
+                // When the payment is passed , send the signal back to Card > Payment 
+                // if(response.data.success) {
+                //     console.log("Successful payment")
+                //     setSuccess(true)
+                //     //setPay(true)
+                // }
+                console.log(currentUser.multiFactor.user.email)
+                if(info.zip){
+                    await axios.get(`https://sushi-back-end.herokuapp.com/api/user/${currentUser.multiFactor.user.email}`)
+                        .then( async (res)=> {
+                            const id = res.data[0].id
+                            console.log(info)
+                            await axios.post("https://sushi-back-end.herokuapp.com/api/purchaseHistory",{...info, order_complete:true,userId:id})
+                            .then((res)=> console.log(res))
+                            .catch((err)=> console.log(err))
+                        })
+                        .then((err)=> console.log(err))
+                }
             
             }catch(error){
                 console.log("Error",error)
