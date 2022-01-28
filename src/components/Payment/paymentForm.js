@@ -14,6 +14,9 @@ export default function PaymentForm (props){
     const elements = useElements()
 
     const [address, setAddress] = useState({
+        first_name:"",
+        last_name:"",
+        phone:"",
         street: "",
         apt: "",
         city: "",
@@ -29,7 +32,17 @@ export default function PaymentForm (props){
 
     const showAddress = () => {
         return(
-            <div className="address-form">       
+            <div className="address-form">   
+                <div>
+                    <label>First Name</label> 
+                    <input type="text" name="first_name" onChange={updateAddress} />     
+                    <label>Last Name</label> 
+                    <input type="text" name="last_name" onChange={updateAddress} />                             
+                </div>
+                <div>
+                    <label>Phone</label> 
+                    <input type="text" name="phone" onChange={updateAddress} />                               
+                </div>    
                 <div>
                     <label>Street</label> 
                     <input type="text" name="street" onChange={updateAddress} />                               
@@ -97,6 +110,7 @@ export default function PaymentForm (props){
                     console.log("Successful payment")
                     setSuccess(true)
                     //setPay(true)
+
                 }
             
             }catch(error){
