@@ -1,11 +1,13 @@
 import React from 'react';
 import {Link,Outlet} from 'react-router-dom';
-import { Container, FormControl, Navbar, Nav, Dropdown, Badge } from 'react-bootstrap'
+import { Container, NavDropdown, Navbar, Nav, Dropdown, Badge } from 'react-bootstrap'
 import { IoCartOutline } from 'react-icons/io5'
 import { GiSushis } from 'react-icons/gi'
+import { TiThMenuOutline } from 'react-icons/ti'
 import { useLayoutEffect, useState } from 'react';
 import { useAuth } from "./Auth/AuthContext"
 import { CartState } from './GlobalContext';
+
 
 export default function NavBar(){
 
@@ -49,7 +51,14 @@ export default function NavBar(){
                         <h3 className='sushi-heading'>すし</h3>
 
                         { ShowWindowDimensions() ?
-                        <></>
+                        <NavDropdown  title={ <TiThMenuOutline color="white" fontSize="25px"/>}id="collasible-nav-dropdown">
+                        <NavDropdown.Item href="/home">Home</NavDropdown.Item>
+                        <NavDropdown.Item href="/menu">Menu</NavDropdown.Item>
+                        <NavDropdown.Item href="/login">Login</NavDropdown.Item>
+                        <NavDropdown.Item href="/signup">Signup</NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item href="/payment">Payment</NavDropdown.Item>
+                        </NavDropdown>
                         :
                         <>
                             <Link className='nav-link' to="/">Home</Link>
