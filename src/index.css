@@ -178,3 +178,9 @@ a.more-link:hover {
   margin-right: 30px;
 }
 
+.thx-img{
+  width: 500px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

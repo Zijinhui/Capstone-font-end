@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState} from 'react'
 import Input from './Input'
-import Review from './Review'
 //import { Navigate} from 'react-router-dom'
 
 
@@ -22,7 +21,6 @@ function Payment() {
 
     return (
         <div>
-            <Review />
             <h1>Payment</h1>
             <div>
                 <div className="option-btns">
@@ -31,7 +29,7 @@ function Payment() {
                 </div>
             </div>
             <div>
-              {display.card ? <div><Input display={display}/></div> : <></>}   
+              <Input display={display}/>
             </div>            
         </div>
     )

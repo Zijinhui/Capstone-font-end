@@ -1,10 +1,12 @@
 import React from 'react';
 import Order from './Order';
 import { CartState } from '../GlobalContext';
+import { Navigate } from 'react-router-dom'
 import { useNavigate} from 'react-router-dom'
 
 function Cart(props) {
 
+      //const [redirect, setRedirect] = useState(false)
       const {state:{cart,price}} = CartState()
 
       const display = cart.map(e=> <Order key={e.food.id} food={e} image={e.food.image}/>)
@@ -73,7 +75,7 @@ function Cart(props) {
                         <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
                         <h5 class="fw-bold">${(price*1.08875+5).toFixed(2)}</h5>
                         </li>
-                    </ul><a href="#" class="btn btn-dark rounded-pill py-2 d-md-block">Procceed to checkout</a>
+                    </ul><a href="#" class="btn btn-dark rounded-pill py-2 d-md-block" onClick={()=>handleClick()}>Procceed to checkout</a>
                     </div>
                 </div>
                 </div>

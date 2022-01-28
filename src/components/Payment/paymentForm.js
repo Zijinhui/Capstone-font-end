@@ -2,11 +2,6 @@ import React, {useState} from 'react'
 import {CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import axios from 'axios'
 
-// {/* <form onSubmit={handleSubmit}> */}
-// <CardElement options={CARD_OPTIONS}/>
-// {/* <button>Pay</button>
-// </form> */}
-
 export default function PaymentForm (props){
 
     const [success,setSuccess] = useState(false)
@@ -33,36 +28,33 @@ export default function PaymentForm (props){
     const showAddress = () => {
         return(
             <div className="address-form">   
-                <div>
+                <div className="name">
                     <label>First Name</label> 
                     <input type="text" name="first_name" onChange={updateAddress} />     
                     <label>Last Name</label> 
                     <input type="text" name="last_name" onChange={updateAddress} />                             
-                </div>
-                <div>
-                    <label>Phone</label> 
-                    <input type="text" name="phone" onChange={updateAddress} />                               
-                </div>    
-                <div>
+                </div >
+
+                <div className="address-row">
                     <label>Street</label> 
-                    <input type="text" name="street" onChange={updateAddress} />                               
-                </div>
-                <div className="apt">
+                    <input type="text" name="street" onChange={updateAddress} />   
                     <label >Apt(optional)</label> 
-                    <input type="text" name="apt" onChange={updateAddress}/>                      
+                    <input type="text" name="apt" onChange={updateAddress}/>                                        
                 </div>
                 <div className="city">
                     <label>City</label> 
-                    <input type="text" name="city" onChange={updateAddress} />                               
-                </div>
-                <div className="state">
+                    <input type="text" name="city" onChange={updateAddress} />
                     <label>State</label> 
-                    <input type="text" name="state" onChange={updateAddress} />                               
+                    <input type="text" name="state" onChange={updateAddress} />                                
                 </div>
-                <div className="zip">
+                <div>
                     <label>Zip</label> 
-                    <input type="text" name="zip" onChange={updateAddress} />                               
-                </div>
+                    <input type="text" name="zip" onChange={updateAddress} /> 
+                    <label>Phone</label> 
+                    <input type="text" name="phone" onChange={updateAddress} />                               
+                </div>    
+                
+            
         </div>
         )
     }
@@ -90,7 +82,7 @@ export default function PaymentForm (props){
     const handleSubmit = async (e) => {
         e.preventDefault()
         //props.updateAddress(true)
-        console.log(address.street)
+        console.log(address)
 
         const {error, paymentMethod} = await stripe.createPaymentMethod({
             type: "card",
@@ -100,18 +92,15 @@ export default function PaymentForm (props){
         if(!error) {
             try {
                 const {id} = paymentMethod
-                const response = await axios.post("https://sushi-back-end.herokuapp.com/payment", {
-                    amount: 1000,
-                    id
-                })
-    
-                // When the payment is passed , send the signal back to Card > Payment 
-                if(response.data.success) {
+                await axios.post("https://sushi-back-end.herokuapp.com/payment", {amount: 100, id})
+                .then((res)=> {
+                    console.log(res)
+                    console.log(res.data)
+                    if(res.data.success===false) {
                     console.log("Successful payment")
                     setSuccess(true)
-                    //setPay(true)
-
-                }
+                }})
+                .catch((err)=> console.log(err))
             
             }catch(error){
                 console.log("Error",error)
@@ -125,19 +114,20 @@ export default function PaymentForm (props){
         return (
             <>
             {!success ? 
-               <>
+            
+               <div className="card-input">
                     <fieldset className="FormGroup">
                         <div className="FormRow">
                             <CardElement options={CARD_OPTIONS} />
                         </div>
                     </fieldset>
                     <button className="pay-btn" >Pay</button>
-               </>
+               </div>
                 :
                 <div>
-                    <h2>   Thanks for your phurchasing! 
-              We will notice you when the store accept your order!</h2>
-                    <img src={require('../../img/thank-you.gif')}/>
+                    <h2>   Thanks for your phurchasing! </h2>
+              <h2>We will notice you when the store accept your order!</h2>
+                    <img src={require('../../img/thank-you.gif')} className="thx-img"/>
                 </div> 
             }
             </>
@@ -145,11 +135,11 @@ export default function PaymentForm (props){
     }
 
  
-    return (
+    return (   
         <>
-        <form onSubmit={handleSubmit}>
-        {props.display.address && showAddress() }
-        {props.display.card && showCard() }
+        <form onSubmit={handleSubmit} className="payment-form">
+            {props.display.address && showAddress() }
+            {props.display.card && showCard() } 
         </form>
         </>
     )
