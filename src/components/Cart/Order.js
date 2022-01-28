@@ -27,9 +27,9 @@ function Order(props){
 
                 <td class="border-0 align-middle"><strong>${props.food.food.price}</strong></td>
                 
-                <Button className='cartBtn' onClick={()=>handleChange(props.food.food,'DECREMENT_IN_CART')}>-</Button>
+                <td class="border-0 align-middle"><Button className='cartBtn'  onClick={()=>handleChange(props.food.food,'DECREMENT_IN_CART')}>-</Button></td>
                 <td class="border-0 align-middle"><strong>{props.food.qty}</strong></td>
-                <Button className='cartBtn2' onClick={()=>handleChange(props.food.food,'INCREMENT_IN_CART')}>+</Button>
+                <td class="border-0 align-middle"><Button className='cartBtn' onClick={()=>handleChange(props.food.food,'INCREMENT_IN_CART')}>+</Button></td>
             </tr>
         </tbody>
         
