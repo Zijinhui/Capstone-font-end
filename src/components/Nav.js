@@ -4,7 +4,7 @@ import { Container, NavDropdown, Navbar, Nav, Dropdown, Badge } from 'react-boot
 import { IoCartOutline } from 'react-icons/io5'
 import { GiSushis } from 'react-icons/gi'
 import { TiThMenuOutline } from 'react-icons/ti'
-import { useLayoutEffect, useState } from 'react';
+import { useLayoutEffect, useState, useEffect} from 'react';
 import { useAuth } from "./Auth/AuthContext"
 import { CartState } from './GlobalContext';
 
@@ -29,7 +29,6 @@ export default function NavBar(){
       
       function ShowWindowDimensions(props) {
         const [width, height] = useWindowSize();
-        console.log(width)
         let smallScreen = false
         if (width < 616) {
             smallScreen = true
@@ -37,7 +36,6 @@ export default function NavBar(){
         return smallScreen
       }
       
-    //   const {user:{currentUser}} = CartState()
 
       const { currentUser } = useAuth()
 
@@ -75,7 +73,10 @@ export default function NavBar(){
                     <Dropdown className="m-auto">
                         <Dropdown.Toggle variant="success">
                         <IoCartOutline color="white" fontSize="25px"/>
-                        <Badge>{cart.length>1? cart.reduce((pre,curr)=>pre.qty+curr.qty) : cart.length===1? cart[0].qty : 0}</Badge>
+                        <Badge>{
+                            cart.length>1?
+                                cart.map(prod => prod.qty).reduce((pre, curr) => pre + curr) : cart.length===1?cart[0].qty:0
+                        }</Badge>
                         </Dropdown.Toggle>
                         <Dropdown.Menu style={{ minWidth: 370}}>
                             {cart.length > 0?

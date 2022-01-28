@@ -97,7 +97,7 @@ export default function PaymentForm (props){
             try {
                 const {id} = paymentMethod
 
-                await axios.post("https://sushi-back-end.herokuapp.com/payment", {amount: 100, id})
+                await axios.post("https://sushi-back-end.herokuapp.com/payment", {amount: {price}, id})
                 .then((res)=> {
                     console.log(res)
                     console.log(res.data)
