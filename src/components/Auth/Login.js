@@ -11,6 +11,7 @@ export default function Login() {
   const { login } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
+  const [length, setLength] = useState(false)
   const history = useNavigate()
 
   async function handleSubmit(e) {
@@ -22,14 +23,6 @@ export default function Login() {
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value)
       history('/')
-
-      await axios.post("https://sushi-back-end.herokuapp.com/api/user", {email:email})
-          .then(function (response) {
-              console.log(response);
-          })
-          .catch(function (err) {
-                console.log(err);
-        });
     } catch {
       setError("Failed to log in")
     }

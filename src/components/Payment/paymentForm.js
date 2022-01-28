@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import axios from 'axios'
 import { useAuth } from "../Auth/AuthContext"
-
+import { CartState } from '../GlobalContext';
 // {/* <form onSubmit={handleSubmit}> */}
 // <CardElement options={CARD_OPTIONS}/>
 // {/* <button>Pay</button>
@@ -11,10 +11,11 @@ import { useAuth } from "../Auth/AuthContext"
 export default function PaymentForm (props){
 
     const [success,setSuccess] = useState(false)
-    const [id,setId] = useState('')
+    const [userId,setId] = useState('')
     const stripe = useStripe()
     const elements = useElements()
     const {currentUser} = useAuth()
+    const {state:{price}} = CartState()
 
     const [address, setAddress] = useState({
         first_name:"",
@@ -104,26 +105,24 @@ export default function PaymentForm (props){
             try {
                 const {id} = paymentMethod
                 const response = await axios.post("https://sushi-back-end.herokuapp.com/payment", {
-                    amount: 1000,
+                    amount: price,
                     id
-                })
+                }).then(res=> console.log("Successful payment"))
+                .catch((err)=> console.log(err.message))
     
                 // When the payment is passed , send the signal back to Card > Payment 
-                if(response.data.success) {
-                    console.log("Successful payment")
-                    setSuccess(true)
-                    //setPay(true)
-
-
-                    await axios.get(`https://sushi-back-end.herokuapp.com/api/user/${currentUser}`)
-                    .then((res)=> console.log(res))
+                // if(response.data.success) {
+                //     console.log("Successful payment")
+                //     setSuccess(true)
+                //     //setPay(true)
+                // }
+                await axios.get(`https://sushi-back-end.herokuapp.com/api/user/${currentUser}`)
+                    .then((res)=> setId(res.id))
                     .then((err)=> console.log(err))
 
-                    await axios.post("https://sushi-back-end.herokuapp.com/payment",{...address, order_complete:true})
+                    await axios.post("https://sushi-back-end.herokuapp.com/api/purchaseHistory",{...address, order_complete:true,id:userId})
                     .then((res)=> console.log(res))
                     .catch((err)=> console.log(err))
-
-                }
             
             }catch(error){
                 console.log("Error",error)
