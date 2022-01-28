@@ -52,7 +52,7 @@ export default function NavBar(){
 
                         { ShowWindowDimensions() ?
                         <NavDropdown  title={ <TiThMenuOutline color="white" fontSize="25px"/>}id="collasible-nav-dropdown">
-                        <NavDropdown.Item href="/home">Home</NavDropdown.Item>
+                        <NavDropdown.Item href="/">Home</NavDropdown.Item>
                         <NavDropdown.Item href="/menu">Menu</NavDropdown.Item>
                         <NavDropdown.Item href="/login">Login</NavDropdown.Item>
                         <NavDropdown.Item href="/signup">Signup</NavDropdown.Item>
