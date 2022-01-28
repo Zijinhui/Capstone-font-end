@@ -11,7 +11,7 @@ export default function PaymentForm (props){
     const stripe = useStripe()
     const elements = useElements()
     const {currentUser} = useAuth()
-    const {state:{price}} = CartState()
+    const {state:{price},dispath} = CartState()
 
     const [info, setInfo] = useState({
         first_name:"",
@@ -41,7 +41,7 @@ export default function PaymentForm (props){
 
                 <div className="address-row">
                     <label>Street</label> 
-                    <input type="text" name="street" onChange={updateAddress} />   
+                    <input type="text" name="address" onChange={updateAddress} />   
                     <label >Apt(optional)</label> 
                     <input type="text" name="apt" onChange={updateAddress}/>                                        
                 </div>
@@ -92,6 +92,12 @@ export default function PaymentForm (props){
             type: "card",
             card: elements.getElement(CardElement)
         })
+
+    function handlePayment(){
+        dispath({
+            type : 'ROMOVE_ALL_CART'
+        })
+    }
         
         if(!error) {
             try {

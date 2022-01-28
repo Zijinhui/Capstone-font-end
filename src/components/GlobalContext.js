@@ -58,8 +58,8 @@ export const cartReducer = (state,action) =>{
                 return {price:state.price+action.payload.food.price,cart:[...state.cart, {...action.payload,qty:1}]}
             }
             return {price:state.price+action.payload.food.price,cart:state.cart}
-        case 'ROMOVE_TO_CART':
-            return {price:state.price-action.payload.food.price,cart: state.cart.filter(c=> c.id!== action.payload.food.id)}
+        case 'ROMOVE_ALL_CART':
+            return {price:0, cart:[]}
         case 'CHANGE_QTY':
             return {...state.price,cart: state.cart.filter((c)=> c.id === action.payload.food.id? (c.qty=action.payload.food.qty) : c.qty)}
         case 'INCREMENT_IN_CART':
