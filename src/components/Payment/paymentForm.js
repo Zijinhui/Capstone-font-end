@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import axios from 'axios'
+import { useAuth } from "../Auth/AuthContext"
 
 // {/* <form onSubmit={handleSubmit}> */}
 // <CardElement options={CARD_OPTIONS}/>
@@ -10,8 +11,10 @@ import axios from 'axios'
 export default function PaymentForm (props){
 
     const [success,setSuccess] = useState(false)
+    const [id,setId] = useState('')
     const stripe = useStripe()
     const elements = useElements()
+    const {currentUser} = useAuth()
 
     const [address, setAddress] = useState({
         first_name:"",
@@ -110,6 +113,15 @@ export default function PaymentForm (props){
                     console.log("Successful payment")
                     setSuccess(true)
                     //setPay(true)
+
+
+                    await axios.get(`https://sushi-back-end.herokuapp.com/api/user/${currentUser}`)
+                    .then((res)=> console.log(res))
+                    .then((err)=> console.log(err))
+
+                    await axios.post("https://sushi-back-end.herokuapp.com/payment",{...address, order_complete:true})
+                    .then((res)=> console.log(res))
+                    .catch((err)=> console.log(err))
 
                 }
             

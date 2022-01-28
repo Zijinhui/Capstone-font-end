@@ -73,7 +73,7 @@ function Cart(props) {
                         <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
                         <h5 class="fw-bold">${(price*1.08875+5).toFixed(2)}</h5>
                         </li>
-                    </ul><a href="#" class="btn btn-dark rounded-pill py-2 d-md-block">Procceed to checkout</a>
+                    </ul><button onClick={()=>handleClick()} class="btn btn-dark rounded-pill py-2 d-md-block">Procceed to checkout</button>
                     </div>
                 </div>
                 </div>
