@@ -35,7 +35,7 @@ function Food (props) {
       return (
           <div>
               <MenuNav />
-              {food.length>0? <div className='sushis'>{display}</div> : <h3 className=''>Comming Soon!</h3>}
+              {food.length>0? <div className='sushis'>{display}</div> : <h3 className='coming'>Coming Soon!</h3>}
           </div>
       );
 
