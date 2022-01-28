@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState} from 'react'
 import Input from './Input'
+import Review from './Review'
 //import { Navigate} from 'react-router-dom'
 
 
@@ -21,11 +22,12 @@ function Payment() {
 
     return (
         <div>
+            <Review />
             <h1>Payment</h1>
-            <div className="payment-sheet">
-                <div>
-                    <button onClick={() => getCardForm()}>Pick Up</button>
-                    <button onClick={() => getBothForm()}>Delivery</button>
+            <div>
+                <div className="option-btns">
+                    <button className="option-btn" onClick={() => getCardForm()}>Pick Up</button>
+                    <button className="option-btn" onClick={() => getBothForm()}>Delivery</button>
                 </div>
             </div>
             <div>

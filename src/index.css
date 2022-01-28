@@ -211,16 +211,20 @@ button {
     justify-content: space-around;
 
   }
-  .food-desc{
-  
-  }
-  
-  
-
 
 .m-auto {
   margin-left: 40px;
 
+}
+
+/*Payment*/
+.option-btns {
+  text-align: center;
+  margin-top: 10px;
+}
+.option-btn {
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 
