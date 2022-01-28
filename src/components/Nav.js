@@ -57,7 +57,7 @@ export default function NavBar(){
                         <NavDropdown.Item href="/login">Login</NavDropdown.Item>
                         <NavDropdown.Item href="/signup">Signup</NavDropdown.Item>
                         <NavDropdown.Divider />
-                        <NavDropdown.Item href="/payment">Payment</NavDropdown.Item>
+                        {/*<NavDropdown.Item href="/payment">Payment</NavDropdown.Item>*/}
                         </NavDropdown>
                         :
                         <>
@@ -65,7 +65,7 @@ export default function NavBar(){
                             <Link className='nav-link' to="/menu">Menu</Link>
                             {currentUser? <Link className='nav-link' to="/user-profile">User Profile</Link> : <Link className='nav-link' to="/login">Login</Link>}
                             <Link className='nav-link' to="/cart">Cart</Link>
-                            <Link className="nav-link" to="/payment">Payment</Link>
+                            {/*<Link className="nav-link" to="/payment">Payment</Link>*/}
                         </>   
                         }
                     </nav>  

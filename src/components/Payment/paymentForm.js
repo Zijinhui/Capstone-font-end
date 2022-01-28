@@ -8,7 +8,7 @@ export default function PaymentForm (props){
     const stripe = useStripe()
     const elements = useElements()
 
-    const [address, setAddress] = useState({
+    const [info, setAddress] = useState({
         first_name:"",
         last_name:"",
         phone:"",
@@ -20,7 +20,7 @@ export default function PaymentForm (props){
     })
 
     function updateAddress (e) {      
-        setAddress({...address, [e.target.name]: e.target.value})
+        setAddress({...info, [e.target.name]: e.target.value})
         //console.log(e.target)
     }
     //console.log(address)
@@ -82,7 +82,7 @@ export default function PaymentForm (props){
     const handleSubmit = async (e) => {
         e.preventDefault()
         //props.updateAddress(true)
-        console.log(address)
+        console.log(info)
 
         const {error, paymentMethod} = await stripe.createPaymentMethod({
             type: "card",
@@ -137,8 +137,8 @@ export default function PaymentForm (props){
  
     return (   
         <>
-        <form onSubmit={handleSubmit} className="payment-form">
-            {props.display.address && showAddress() }
+        <form onSubmit={handleSubmit} className="payment-form" align="center">
+            {(props.display.address && success===false) && showAddress() }
             {props.display.card && showCard() } 
         </form>
         </>

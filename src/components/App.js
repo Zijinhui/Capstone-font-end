@@ -15,6 +15,7 @@ import {BrowserRouter as Router, Routes ,Route} from 'react-router-dom';
 function App () {
 
     return(
+        <>
         <Router>
                 <Routes>
                     <Route path='/' element={<Nav />}>
@@ -31,6 +32,18 @@ function App () {
                     </Route>
                 </Routes>
         </Router>
+        <div id='footer' >
+            <div id='footerItems'>
+                Zixin Zou   |
+                Zijinhui Zhuang  |
+                Jiayi Chen   |
+                Oleksii Kravtsov
+            </div>
+            <div id='bottomOfFooter' className='center' className='centerText'>
+                Ⓒ Group 9
+            </div>
+        </div>
+        </>
     )
 }
 
