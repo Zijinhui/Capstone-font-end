@@ -16,11 +16,11 @@ export default function PaymentForm (props){
     const {currentUser} = useAuth()
     const {state:{price}} = CartState()
 
-    const [address, setAddress] = useState({
+    const [info, setInfo] = useState({
         first_name:"",
         last_name:"",
         phone:"",
-        street: "",
+        address: "",
         apt: "",
         city: "",
         state: "",
@@ -28,10 +28,9 @@ export default function PaymentForm (props){
     })
 
     function updateAddress (e) {      
-        setAddress({...address, [e.target.name]: e.target.value})
-        //console.log(e.target)
+        setInfo({...info, [e.target.name]: e.target.value})
     }
-    //console.log(address)
+    console.log(info)
 
     const showAddress = () => {
         return(
@@ -92,8 +91,9 @@ export default function PaymentForm (props){
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        console.log(info)
         //props.updateAddress(true)
-        console.log(address.street)
+        console.log(info.street)
 
         const {error, paymentMethod} = await stripe.createPaymentMethod({
             type: "card",
@@ -116,14 +116,17 @@ export default function PaymentForm (props){
                 //     //setPay(true)
                 // }
                 console.log(currentUser.multiFactor.user.email)
-                await axios.get(`https://sushi-back-end.herokuapp.com/api/user/${currentUser.multiFactor.user.email}`)
-                    .then( async (res)=> {
-                        const id = res.data[0].id
-                        await axios.post("https://sushi-back-end.herokuapp.com/api/purchaseHistory",{...address, order_complete:true,id:id})
-                        .then((res)=> console.log({...address, order_complete:true,id:id}))
-                        .catch((err)=> console.log(err))
-                    })
-                    .then((err)=> console.log(err))
+                if(info.zip){
+                    await axios.get(`https://sushi-back-end.herokuapp.com/api/user/${currentUser.multiFactor.user.email}`)
+                        .then( async (res)=> {
+                            const id = res.data[0].id
+                            console.log(info)
+                            await axios.post("https://sushi-back-end.herokuapp.com/api/purchaseHistory",{...info, order_complete:true,userId:id})
+                            .then((res)=> console.log(res))
+                            .catch((err)=> console.log(err))
+                        })
+                        .then((err)=> console.log(err))
+                }
             
             }catch(error){
                 console.log("Error",error)
