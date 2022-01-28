@@ -43,7 +43,7 @@ export default function NavBar(){
 
     return(
         <>
-            <Navbar bg="dark" variant="dark"  style={{ height: 80}}>
+            <Navbar bg="dark" variant="myColor"  style={{ height: 80}}>
                 <Container>
                    
                     <nav className='nav'>
@@ -54,18 +54,16 @@ export default function NavBar(){
                         <NavDropdown  title={ <TiThMenuOutline color="white" fontSize="25px"/>}id="collasible-nav-dropdown">
                         <NavDropdown.Item href="/">Home</NavDropdown.Item>
                         <NavDropdown.Item href="/menu">Menu</NavDropdown.Item>
-                        <NavDropdown.Item href="/login">Login</NavDropdown.Item>
-                        <NavDropdown.Item href="/signup">Signup</NavDropdown.Item>
+                        {currentUser? <NavDropdown.Item href="/User Profile">User Profile</NavDropdown.Item> : <NavDropdown.Item href="/login">Login</NavDropdown.Item>}
                         <NavDropdown.Divider />
-                        <NavDropdown.Item href="/payment">Payment</NavDropdown.Item>
+                        <NavDropdown.Item href="/cart">Cart</NavDropdown.Item>
                         </NavDropdown>
                         :
                         <>
-                            <Link className='nav-link' to="/">Home</Link>
-                            <Link className='nav-link' to="/menu">Menu</Link>
-                            {currentUser? <Link className='nav-link' to="/user-profile">User Profile</Link> : <Link className='nav-link' to="/login">Login</Link>}
-                            <Link className='nav-link' to="/cart">Cart</Link>
-                            <Link className="nav-link" to="/payment">Payment</Link>
+                            <Link className='nav-link' to="/"><p className='myColor'>Home</p></Link>
+                            <Link className='nav-link' to="/menu"><p className='myColor'>Menu</p></Link>
+                            {currentUser? <Link className='nav-link' to="/user-profile"><p className='myColor'>User Profile</p></Link> : <Link className='nav-link' to="/login"><p className='myColor'>Log in</p></Link>}
+                            <Link className='nav-link' to="/cart"><p className='myColor'>Cart</p></Link>
                         </>   
                         }
                     </nav>  
