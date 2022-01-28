@@ -32,7 +32,7 @@ function App () {
                     </Route>
                 </Routes>
         </Router>
-        <div id='footer' >
+        {/*<div id='footer' >
             <div id='footerItems'>
                 Zixin Zou   |
                 Zijinhui Zhuang  |
@@ -42,7 +42,7 @@ function App () {
             <div id='bottomOfFooter' className='center' className='centerText'>
                 Ⓒ Group 9
             </div>
-        </div>
+    </div>*/}
         </>
     )
 }
