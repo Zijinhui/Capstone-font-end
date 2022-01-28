@@ -24,18 +24,18 @@ function Food (props) {
         })
       }
 
-      const display = food.map(e => <div key={e.id}>
-                                        <li>{e.image}image</li> 
+      const display = food.map(e => <div className='sushi' key={e.id}>
+                                        <li><img className='menuImage' src={e.image}></img></li> 
                                         <li>{e.name}</li>
-                                        <li>{e.price}</li>
+                                        <li>${e.price}</li>
                                         <li>{e.description}</li>
-                                        <button onClick={()=>handleChange(e)}>Add to Cart</button>
+                                        <button className="addCartButton" onClick={()=>handleChange(e)}>Add to Cart</button>
                                     </div>)
 
       return (
           <div>
               <MenuNav />
-              {display}
+              {food.length>0? <div className='sushis'>{display}</div> : <h3 className=''>Comming Soon!</h3>}
           </div>
       );
 
