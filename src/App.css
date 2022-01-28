@@ -75,7 +75,7 @@ h3 {
 .card-input {
 	position: absolute;
 	left: 50%;
-	top: 55%;
+	top: 60%;
 	transform: translate(-50%, -50%);	
 }
 /*.address-form {

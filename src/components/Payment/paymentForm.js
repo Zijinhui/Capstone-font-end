@@ -97,12 +97,15 @@ export default function PaymentForm (props){
             try {
                 const {id} = paymentMethod
 
-                const response = await axios.post("https://sushi-back-end.herokuapp.com/payment", {
-                    amount: price,
-                    id
-                }).then(res=> console.log("Successful payment"))
-                .catch((err)=> console.log(err.message))
-    
+                await axios.post("https://sushi-back-end.herokuapp.com/payment", {amount: 100, id})
+                .then((res)=> {
+                    console.log(res)
+                    console.log(res.data)
+                    if(res.data.success===false) {
+                    console.log("Successful payment")
+                    setSuccess(true)
+                }})
+                .catch((err)=> console.log(err))
                 // When the payment is passed , send the signal back to Card > Payment 
                 // if(response.data.success) {
                 //     console.log("Successful payment")
