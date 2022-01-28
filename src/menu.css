@@ -7,23 +7,11 @@
     margin-top: 30px;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .navTitle{
     text-decoration: none;
-}
-
-@media screen and (max-width: 1250px) {
-    .sushis{
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 10px !important;
-    }
-}
-
-@media screen and (max-width: 820px) {
-    .sushis{
-        grid-template-columns: repeat(1, 1fr) !important;
-    }
 }
 
   /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
@@ -54,8 +42,9 @@
 }
 
 .sushis{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    grid-template-columns: auto;
+    flex-wrap: wrap;
     text-align: center;
     margin:15px auto;
 }
