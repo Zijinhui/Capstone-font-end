@@ -12,7 +12,7 @@ export default function NavBar(){
 
 
     const {state:{cart}} = CartState()
-    console.log(cart)
+    //console.log(cart)
 
     function useWindowSize() {
         const [size, setSize] = useState([0, 0]);
@@ -29,7 +29,7 @@ export default function NavBar(){
       
       function ShowWindowDimensions(props) {
         const [width, height] = useWindowSize();
-        console.log(width)
+        //console.log(width)
         let smallScreen = false
         if (width < 616) {
             smallScreen = true

@@ -1,11 +1,11 @@
 import React from 'react'
-import Card from './Card'
+import Input from './Input'
 
 function Review() {
     return (
         <div>
             <h1>Review & Confirm</h1>
-        <Card/>
+        <Input/>
         </div>
     )
 }
