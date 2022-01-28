@@ -10,14 +10,12 @@ import Menu from './Menu/Menu';
 import Cart from './Cart/Cart'
 import Food from './Menu/Food';
 import  Payment from './Payment/Payment';
-import { AuthProvider } from './Auth/AuthContext';
 import {BrowserRouter as Router, Routes ,Route} from 'react-router-dom';
 
 function App () {
 
     return(
         <Router>
-            <AuthProvider>
                 <Routes>
                     <Route path='/' element={<Nav />}>
                         <Route path='/' element={<Home />}/>
@@ -32,7 +30,6 @@ function App () {
                         <Route path="/update-profile" element={<UpdateProfile />} />
                     </Route>
                 </Routes>
-            </AuthProvider>
         </Router>
     )
 }

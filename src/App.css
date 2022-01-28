@@ -10,6 +10,11 @@
 	width: 400px
 }
 
+.form{
+	width: 400px;
+	margin: 0px auto;
+}
+
 .FormRow {
 	display: -ms-flexbox;
 	display: flex;
@@ -60,4 +65,8 @@
 h1,
 h3 {
 	text-align: center;
+}
+
+.coming{
+	margin-top: 100px;
 }

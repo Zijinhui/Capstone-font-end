@@ -41,22 +41,25 @@ export default function Signup() {
           <h2 className="text-center mb-4">Sign Up</h2>
           {(error !== "Hey"&&error )&& <Alert variant="danger">{error}</Alert>}
           {error === "Hey" && <Alert variant='success'>Successful Sign up</Alert>}
-          <Form onSubmit={handleSubmit}>
+          <Form className='form' onSubmit={handleSubmit}>
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>
               <Form.Control type="email" ref={emailRef} required />
             </Form.Group>
-            <Form.Group id="password">
+            <Form.Group id="password" style={{paddingTop:20}}>
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" ref={passwordRef} required />
             </Form.Group>
-            <Form.Group id="password-confirm">
+            <Form.Group id="password-confirm" style={{paddingTop:20}}>
               <Form.Label>Password Confirmation</Form.Label>
               <Form.Control type="password" ref={passwordConfirmRef} required />
             </Form.Group>
-            <Button disabled={loading} className="w-100" type="submit">
-              Sign Up
-            </Button>
+            <div style={{paddingTop:30}}>
+              <Button disabled={loading} className="w-100" type="submit">
+                Sign Up
+              </Button>
+            </div>
+            
           </Form>
         </Card.Body>
       </Card>
