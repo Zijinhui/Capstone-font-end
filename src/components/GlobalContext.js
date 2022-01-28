@@ -82,6 +82,8 @@ export const cartReducer = (state,action) =>{
                 }
             })
             return {price:state.price-action.payload.price, cart: state.cart.filter(e=> e.qty!==0)}
+        case 'SET_FINALPRICE':
+                return {...state,price:action.price}
         default:
             return state
     }
