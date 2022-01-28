@@ -175,3 +175,13 @@ a.more-link:hover {
   margin-top: 320%;
 }
 
+/*Payment*/
+.option-btns {
+  text-align: center;
+  margin-top: 10px;
+}
+.option-btn {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
