@@ -11,7 +11,6 @@ import { CartState } from '../GlobalContext';
 export default function PaymentForm (props){
 
     const [success,setSuccess] = useState(false)
-    const [userId,setId] = useState('')
     const stripe = useStripe()
     const elements = useElements()
     const {currentUser} = useAuth()
@@ -116,13 +115,15 @@ export default function PaymentForm (props){
                 //     setSuccess(true)
                 //     //setPay(true)
                 // }
-                await axios.get(`https://sushi-back-end.herokuapp.com/api/user/${currentUser}`)
-                    .then((res)=> setId(res.id))
+                console.log(currentUser.multiFactor.user.email)
+                await axios.get(`https://sushi-back-end.herokuapp.com/api/user/${currentUser.multiFactor.user.email}`)
+                    .then( async (res)=> {
+                        const id = res.data[0].id
+                        await axios.post("https://sushi-back-end.herokuapp.com/api/purchaseHistory",{...address, order_complete:true,id:id})
+                        .then((res)=> console.log({...address, order_complete:true,id:id}))
+                        .catch((err)=> console.log(err))
+                    })
                     .then((err)=> console.log(err))
-
-                    await axios.post("https://sushi-back-end.herokuapp.com/api/purchaseHistory",{...address, order_complete:true,id:userId})
-                    .then((res)=> console.log(res))
-                    .catch((err)=> console.log(err))
             
             }catch(error){
                 console.log("Error",error)
