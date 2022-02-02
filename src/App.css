@@ -73,45 +73,32 @@ h3 {
 
 /*paymentForm*/
 .card-input {
-	position: absolute;
-	left: 50%;
-	top: 60%;
-	transform: translate(-50%, -50%);	
+	margin: 0 auto;
 }
-/*.address-form {
-	text-align: center;
-
-}
-.address-form div {
-	padding: 20px 0;
-	margin-bottom: 5px;
-}*/
-
-/*form{
-	display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-}*/
 .payment-form {
-	padding: 40px;
 	display: flex;
 	flex-direction: column;
-	margin: 0 auto;
 	gap: 20px;
-	align-items: center;
-	justify-content: center;
 }
-.address-form div {
-	display: flex;
-	gap: 10px;
-	margin: 20px auto;
+.address-form {
+	display: grid;
+	grid-template: auto auto/1fr 1fr ;
+	gap: 15px;
+	margin: 0 auto;
+	margin-top: 50px;
+}
+.input{
+	display: block;
+	gap: 20px;
 }
 label{
+	width: 100px;
+}
+/* .input{
 	font-size: 20px;
 	width: 200px;
 	text-align: right;
-}
-
+} */
 #footer{
     left: 0;
     bottom: 0;

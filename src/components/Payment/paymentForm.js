@@ -32,28 +32,36 @@ export default function PaymentForm (props){
     const showAddress = () => {
         return(
             <div className="address-form">   
-                <div className="name">
+                <div className="input">
                     <label>First Name</label> 
                     <input type="text" name="first_name" onChange={updateAddress} />     
+                </div>
+                <div className="input">
                     <label>Last Name</label> 
                     <input type="text" name="last_name" onChange={updateAddress} />                             
                 </div >
 
-                <div className="address-row">
+                <div className="input">
                     <label>Street</label> 
-                    <input type="text" name="address" onChange={updateAddress} />   
+                    <input type="text" name="address" onChange={updateAddress} />  
+                </div>
+                <div className="input"> 
                     <label >Apt(optional)</label> 
                     <input type="text" name="apt" onChange={updateAddress}/>                                        
                 </div>
-                <div className="city">
+                <div className="input">
                     <label>City</label> 
                     <input type="text" name="city" onChange={updateAddress} />
+                </div>
+                <div className="input">
                     <label>State</label> 
                     <input type="text" name="state" onChange={updateAddress} />                                
                 </div>
-                <div>
+                <div className="input">
                     <label>Zip</label> 
                     <input type="text" name="zip" onChange={updateAddress} /> 
+                </div>
+                <div className="input">
                     <label>Phone</label> 
                     <input type="text" name="phone" onChange={updateAddress} />                               
                 </div>    
